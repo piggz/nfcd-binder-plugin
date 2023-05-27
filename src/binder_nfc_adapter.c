@@ -795,6 +795,8 @@ binder_nfc_adapter_submit_power_request(
     NfcAdapter* adapter,
     gboolean on)
 {
+    GDEBUG("binder_nfc_adapter_submit_power_request......");
+
     BinderNfcAdapter* self = BINDER_NFC_ADAPTER(adapter);
     NciCore* nci = self->adapter.nci;
 
@@ -1014,6 +1016,7 @@ void
 binder_nfc_adapter_class_init(
     BinderNfcAdapterClass* klass)
 {
+    GDEBUG("binder_nfc_adapter_class_init....");
     GObjectClass* object_class = G_OBJECT_CLASS(klass);
     NfcAdapterClass* nfc_adapter_class = NFC_ADAPTER_CLASS(klass);
 
