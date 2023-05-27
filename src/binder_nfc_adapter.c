@@ -102,6 +102,9 @@ static guint binder_nfc_adapter_signals[SIGNAL_COUNT] = { 0 };
 #define BINDER_NFC_REQ_CLOSE                (5) /* close */
 #define BINDER_NFC_REQ_CONTROL_GRANTED      (6) /* controlGranted */
 #define BINDER_NFC_REQ_POWER_CYCLE          (7) /* powerCycle */
+#define BINDER_NFC_REQ_FACTORY_RESET        (8) /* factoryReset */
+#define BINDER_NFC_REQ_CLOSE_FOR_POWER_OFF  (9) /* closeForPowerOffCase */
+#define BINDER_NFC_REQ_OPEN_1_1             (10) /* open_1_1 */
 
 /* android.hardware.nfc@1.0::INfcClientCallback */
 #define BINDER_NFC_REQ_CALLBACK_SEND_EVENT  (1) /* sendEvent */
@@ -315,7 +318,7 @@ binder_nfc_client_open(
 
     GASSERT(self->callback);
     gbinder_local_request_append_local_object(req, self->callback);
-    id = gbinder_client_transact(self->client, BINDER_NFC_REQ_OPEN,
+    id = gbinder_client_transact(self->client, BINDER_NFC_REQ_OPEN_1_1,
         0, req, reply, NULL, self);
     gbinder_local_request_unref(req);
     return id;
