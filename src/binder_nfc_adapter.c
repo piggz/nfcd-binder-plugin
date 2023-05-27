@@ -202,6 +202,8 @@ binder_nfc_callback_handle_event(
     BinderNfcAdapter* self,
     GBinderReader* reader)
 {
+    GDEBUG("binder_nfc_callback_handle_event.....");
+
     guint32 event, status;
 
     if (gbinder_reader_read_uint32(reader, &event) &&
@@ -313,6 +315,7 @@ binder_nfc_client_open(
     BinderNfcAdapter* self,
     GBinderClientReplyFunc reply)
 {
+    GDEBUG("Opening");
     GBinderLocalRequest* req = gbinder_client_new_request(self->client);
     gulong id;
 
