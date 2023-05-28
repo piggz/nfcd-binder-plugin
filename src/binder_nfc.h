@@ -58,7 +58,7 @@ GType binder_nfc_target_get_type(void);
 #define BINDER_NFC_TARGET(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), \
         BINDER_NFC_TYPE_TARGET, BinderNfcTarget))
 
-#define BINDER_IFACE(x)     "android.hardware.nfc@1.1::" x
+#define BINDER_IFACE(x)     "android.hardware.nfc@1.0::" x
 #define BINDER_NFC          BINDER_IFACE("INfc")
 #define BINDER_NFC_CALLBACK BINDER_IFACE("INfcClientCallback")
 

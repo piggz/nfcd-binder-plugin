@@ -327,7 +327,7 @@ binder_nfc_client_open(
 
     GASSERT(self->callback);
     gbinder_local_request_append_local_object(req, self->callback);
-    id = gbinder_client_transact(self->client, BINDER_NFC_REQ_OPEN_1_1,
+    id = gbinder_client_transact(self->client, BINDER_NFC_REQ_OPEN,
         0, req, reply, NULL, self);
     gbinder_local_request_unref(req);
     return id;
