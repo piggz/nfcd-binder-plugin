@@ -192,6 +192,12 @@ void
 binder_nfc_adapter_state_check(
     BinderNfcAdapter* self);
 
+static
+gboolean
+binder_nfc_adapter_submit_power_request(
+    NfcAdapter* adapter,
+    gboolean on);
+
 /*==========================================================================*
  * INfcClientCallback
  *==========================================================================*/
@@ -730,6 +736,10 @@ binder_nfc_adapter_new(
         self->client = gbinder_client_new(self->remote, BINDER_NFC);
         self->fqname = fqname;
         GDEBUG("Connected to %s", fqname);
+
+        //Hack power up now
+        gboolean done = binder_nfc_adapter_submit_power_request(NFC_ADAPTER(self), TRUE);
+
         return NFC_ADAPTER(self);
     } else {
         GERR("Failed to connect to %s", fqname);
